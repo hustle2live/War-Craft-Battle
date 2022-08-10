@@ -75,76 +75,16 @@ class Unit {
 }
 
 const units = [
-  new Unit(
-    'Footman',
-    12.5,
-    8,
-    1.35,
-    'http://classic.battle.net/war3/images/human/units/animations/militia.gif'
-  ),
-  new Unit(
-    'Rifleman',
-    21,
-    6,
-    1.5,
-    'http://classic.battle.net/war3/images/human/units/animations/rifleman.gif'
-  ),
-  new Unit(
-    'Militia',
-    12.5,
-    10,
-    1.2,
-    'http://classic.battle.net/war3/images/human/units/animations/militia.gif'
-  ),
-  new Unit(
-    'Peasant',
-    5.5,
-    0,
-    2,
-    'http://classic.battle.net/war3/images/human/units/animations/peasant.gif'
-  ),
-  new Unit(
-    'Knight',
-    34,
-    11,
-    1.4,
-    'http://classic.battle.net/war3/images/human/units/animations/knight.gif'
-  ),
-  new Unit(
-    'Priest',
-    5.5,
-    0,
-    2,
-    'http://classic.battle.net/war3/images/human/units/animations/priest.gif'
-  ),
-  new Unit(
-    'Sorceress',
-    11,
-    0,
-    1.75,
-    'http://classic.battle.net/war3/images/human/units/animations/sorceress.gif'
-  ),
-  new Unit(
-    'Spellbreaker',
-    14,
-    9,
-    1.9,
-    'http://classic.battle.net/war3/images/human/units/animations/spellbreaker.gif'
-  ),
-  new Unit(
-    'Flyingmachine',
-    7.5,
-    8,
-    2,
-    'http://classic.battle.net/war3/images/human/units/animations/flyingmachine.gif'
-  ),
-  new Unit(
-    'Dragonhawk',
-    19,
-    7,
-    1.75,
-    'http://classic.battle.net/war3/images/human/units/animations/dragonhawk.gif'
-  )
+  new Unit('Footman', 12.5, 8, 1.35, 'img/footman.gif'),
+  new Unit('Rifleman', 21, 6, 1.5, 'img/rifleman.gif'),
+  new Unit('Militia', 12.5, 10, 1.2, 'img/militia.gif'),
+  new Unit('Peasant', 5.5, 0, 2, 'img/peasant.gif'),
+  new Unit('Knight', 34, 11, 1.4, 'img/knight.gif'),
+  new Unit('Priest', 5.5, 0, 2, 'img/priest.gif'),
+  new Unit('Sorceress', 11, 0, 1.75, 'img/sorceress.gif'),
+  new Unit('Spellbreaker', 14, 9, 1.9, 'img/spellbreaker.gif'),
+  new Unit('Flyingmachine', 7.5, 8, 2, 'img/flyingmachine.gif'),
+  new Unit('Dragonhawk', 19, 7, 1.75, 'img/dragonhawk.gif')
 ];
 
 // ========= CLASS - G A M E ============ //
@@ -154,12 +94,6 @@ class Game {
     this.playerCard = playerCard;
     this.pcUnit = this.getRandomPC;
   }
-
-  // health() {
-  //   const health = document.createElement('div');
-  //   health.classList.add('health');
-  //   return health;
-  // }
 
   startGame(hero) {
     this.isGameStarted = true;
@@ -173,8 +107,6 @@ class Game {
     const randomUnit = units[Math.floor(Math.random() * units.length)];
     playerUnit.totalHP = playerUnit.EHP;
     randomUnit.totalHP = randomUnit.EHP;
-    // console.log(playerUnit);
-    // console.log(randomUnit);
 
     fightButton.classList.remove('hidden');
     fightButton.addEventListener('click', () =>
@@ -185,8 +117,9 @@ class Game {
   }
 
   stargFighting(player, randomPC) {
+    battleFieldElement.classList.add('onbattle');
+
     fightButton.style.visibility = 'hidden';
-    console.log("Let's Get FIGHT");
 
     // Fighting code goes nexs here..
     let playerIntervFighting;
@@ -204,8 +137,6 @@ class Game {
     function startDamagePC() {
       const playaAttack = player.attack * 10;
       randomPC.totalHP -= playaAttack;
-      console.log('------damage-----');
-      console.log('pc.totalHP' + randomPC.totalHP);
 
       display.renderPlayersHealth(
         display.getHealth(player),
@@ -228,8 +159,6 @@ class Game {
     function startDamagePLAYA() {
       const playaAttack = randomPC.attack * 10;
       player.totalHP -= playaAttack;
-      console.log('------damage-----');
-      console.log('pc.totalHP' + player.totalHP);
 
       display.renderPlayersHealth(
         display.getHealth(player),
@@ -278,11 +207,6 @@ class Display {
     this.renderPlayersHealth = this.displayHP;
   }
 
-  // toggleCharacktersList() {
-  //   this.listElement.classList.remove('hidden');
-  //   this.button.classList.add('hidden');
-  // }
-
   hideCharacktersList() {
     this.listElement.classList.add('hidden');
   }
@@ -302,19 +226,14 @@ class Display {
   health(hero) {
     const playerStartingHP = hero.EHP;
     const valueHP = hero.totalHP;
-
     const healthBarWidth = valueHP > 0 ? (valueHP / playerStartingHP) * 100 : 1;
     const healthElementDiv = document.createElement('div');
-
     healthElementDiv.classList.add('health');
 
     if (healthBarWidth < 40) healthElementDiv.classList.add('red');
     else if (healthBarWidth < 65) healthElementDiv.classList.add('orange');
 
     healthElementDiv.style.width = healthBarWidth + '%'; // change width of HealthBar
-    console.log(hero);
-    console.log(hero.totalHP);
-
     return healthElementDiv;
   }
 
