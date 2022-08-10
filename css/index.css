@@ -1,0 +1,128 @@
+header {
+  text-align: center;
+  padding: 5px;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.start {
+  display: block;
+  padding: 10px 40px;
+  background-color: #fff;
+  color: black;
+  font-size: 20px;
+  margin: 0 auto;
+}
+
+.fight {
+  display: block;
+  background-color: red;
+  color: #fff;
+  font-size: 24px;
+  padding: 15px 35px;
+  margin: 0 auto;
+}
+
+.characters-list.hidden {
+  display: none;
+}
+
+.characters-list {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(5, 225px);
+  grid-template-rows: 1fr 1fr;
+}
+
+.battle-field {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card {
+  width: 200px;
+  height: auto;
+  border: 5px solid black;
+  background: lightgrey;
+  padding-top: 20px;
+  margin-top: 25px;
+}
+
+.select {
+  display: block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  margin: 15px auto;
+}
+
+.select:hover {
+  background-color: gray;
+}
+
+.select:active {
+  background-color: black;
+  color: #fff;
+}
+
+.name {
+  font-size: 24px;
+  color: #13485e;
+}
+
+.name,
+.attack,
+.armour {
+  font-weight: bold;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.picture {
+  display: block;
+  min-width: 100%;
+  height: auto;
+  max-height: 200px;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+}
+
+.health {
+  display: block;
+  box-sizing: border-box;
+  content: '';
+  height: 20px;
+  width: 100%;
+  background: greenyellow;
+  border: 1px solid black;
+  margin: 10px 0;
+}
+
+.health.orange {
+  background: orange;
+}
+
+.health.red {
+  background: red;
+}
+
+.game-winner {
+  font-size: 34px;
+  font-weight: bold;
+  color: red;
+  text-align: center;
+  position: absolute;
+  bottom: 50%;
+  background-color: aliceblue;
+}
+
+button:hover {
+  color: #fff;
+  background-color: rgba(93, 29, 29, 0.457);
+}
+
+button:active {
+  box-shadow: 5px 5px 5px 0 black;
+}
